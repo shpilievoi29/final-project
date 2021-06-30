@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block doctitle %} Registration users|  {{block.super}} {% endblock %}
+{% block content %}
+    <form  method="post">
+    {% csrf_token %}
+        {{form.as_p}}
+
+        <button type="submit">Register</button>
+
+    </form>
+    <div>If you had an account<a class href="{% url "user:sign-in" %}">Login</a>
+    </div>
+{% endblock %}

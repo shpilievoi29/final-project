@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block doctitle %}Profile | {{ block.super }}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-3 mt-3">
+      <img src="https://via.placeholder.com/150x150" alt="150x150 placeholder">
+    </div>
+    <div class="col">
+      <h5>User Profile</h5>
+      <p>{{ request.user.username }}</p>
+      <p>{{ request.user.first_name|title }} {{ request.user.last_name|title }}</p>
+      <p>Email: {{ request.user.email }}</p>
+
+    </div>
+  </div>
+{% endblock %}

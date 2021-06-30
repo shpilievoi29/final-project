@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block doctitle %} Film list |  {{ block.super }}{% endblock %}
+{% block content %}
+    <form  method="post">
+{% csrf_token %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for film in film_list %}
+<div class="col">
+<div class="card h-100">
+                   <img src="{{ film.image}}" alt="
+{{ film.image }}" width="300" height="300">
+            <div class="card-body">
+                <p class="card-context">Film name:   {{ film.film_name }}</p>
+                <p class="card-context">Film description:   {{ film.film_description }}</p>
+                <p class="card-context">Price:  {{ film.price }} $</p>
+
+               </div>
+               </div>
+            </div>
+        {% endfor %}
+    </div>
+</form>
+{% endblock %}
