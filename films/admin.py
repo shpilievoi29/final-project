@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from films.models import Film, Category
+from films.models import Film, Category, FilmSession
 
 
 @admin.register(Category)
@@ -10,8 +10,15 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Film)
-class ProductAdmin(admin.ModelAdmin):
-    fields = ['image', 'category', 'film_name', 'price', 'film_description', 'slug']
-    list_display = ['id', 'image', 'category', 'film_name', 'price', 'film_description', 'slug']
+class FilmAdmin(admin.ModelAdmin):
+    fields = ['image', 'category', 'film_name', 'film_description', 'slug']
+    list_display = ['id', 'image', 'category', 'film_name', 'film_description', 'slug']
     ordering = ['id']
     prepopulated_fields = {'slug': ['film_name', ]}
+
+
+@admin.register(FilmSession)
+class FilmSessionAdmin(admin.ModelAdmin):
+    fields = ["film_name", "price", "date_time", "hall"]
+    list_display = ["film_name", "price", "date_time", "hall"]
+    ordering = ['id']

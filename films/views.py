@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from films.forms import ReviewForms
-from films.models import Film, Category
+from films.models import Film, Category, FilmSession
 from rest_framework.views import APIView
 
 from rest_framework.decorators import api_view
@@ -41,6 +41,16 @@ class FilmDetailView(DetailView):
         context["form"] = ReviewForms()
         return context
 
+
+class SessionListView(ListView):
+    model = FilmSession
+    http_method_names = ["get", "head", "options", "trace"]
+    template_name = "film/sessions.html"
+    queryset = FilmSession.objects.all()
+
+    # def get_queryset(self):
+    #     queryset = super(SessionListView, self).get_queryset()
+    #     return queryset
 
 # class ReviewCreateView(CreateView):
 #     template_name = "film_detail.html"

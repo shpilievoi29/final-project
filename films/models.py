@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.utils.text import slugify
+
 
 from django.db import models
 
@@ -24,10 +24,9 @@ class Film(models.Model):
     film_name = models.CharField(max_length=255, verbose_name="a name title",
                                  help_text="255 characters or fever")
     film_description = models.CharField(max_length=1000, null=True)
-    image = models.ImageField(upload_to='static/media/', null=True)
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True,
+    image = models.ImageField(upload_to="static/media/", null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True,
                                  db_column='category')
-    price = models.DecimalField(max_digits=10, decimal_places=2)
     slug = models.SlugField(max_length=255, help_text=("letters, hyphens, numbers and"
                                                        " underscores"))
 
@@ -38,8 +37,29 @@ class Film(models.Model):
         return self.film_name
 
     def get_absolute_url(self):
-        return reverse_lazy("film:detail", kwargs={"slug": self.slug})
+        return reverse_lazy("films:detail", kwargs={"slug": self.slug})
 
     @property
     def name(self):
         return self.film_name
+
+
+class FilmSession(models.Model):
+    HALL_CHOICES = [
+        [1, 1], [2, 2], [3, 3], [4, 4], [5, 5]
+    ]
+    id = models.AutoField(primary_key=True, null=False, blank=True)
+    film_name = models.ForeignKey(Film, on_delete=models.CASCADE, null=True,
+                                  db_column="title")
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    date_time = models.DateTimeField(blank=True, db_column="date and time sessions")
+    hall = models.PositiveSmallIntegerField(
+        choices=HALL_CHOICES, default=5, verbose_name="hall choices")
+
+    def __repr__(self):
+        return f"Session ('{self.id}')"
+
+    def __str__(self):
+        return f"{self.id}|-title: {self.film_name}" \
+               f"|-price: {self.price}|-day and time:{self.date_time}|-hall:{self.hall}"
+

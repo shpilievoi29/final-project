@@ -2,11 +2,11 @@
 {% block content %}
   <h5 class="h5">{{ object.film }}</h5>
   <div class="row">
-    <div class="col text-end">Price:  {{ object.price|floatformat:"2" }} USD</div>
-      <img src="{{ object.image }}" alt="image">
+
+      <img src="{{ object.image.url}}" alt="image" style="width:300px; " >
   </div>
   <div class="row">
-    <div class="text-body">Description:  {{ object.film_description }}</div>
+    <div class="text-body"> {{ object.film_description }}</div>
   </div>
   <hr>
   <div class="row">
