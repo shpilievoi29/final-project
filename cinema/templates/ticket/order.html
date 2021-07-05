@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block doctitle %}Ticket create Form | {{ block.super }}{% endblock %}
+{% block content %}
+  <form class="row" method="post">
+    {% csrf_token %}
+       {% load static %}
+
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-primary col-1" value="to buy">
+
+<td class="tdStyle">
+  </form>
+{% endblock %}

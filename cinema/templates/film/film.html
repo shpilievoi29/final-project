@@ -8,12 +8,15 @@
 <div class="col">
 
 <div class="card h-100">
-                   <img src="{{film.image}}" alt="
+    {% load static %}
+                   <img src="{{film.image}} " alt="
 {{ film.image }}" width="300" height="300">
             <div class="card-body">
                 <p><a href="{% url "film:detail" slug=film.slug %}">{{film.film_name}}</a></p>
+                <p class="card-context"> {{ film.category.category }}</p>
                 <p class="card-context"> {{ film.film_description }}</p>
-
+                <body id="bg" style="background-image: url('{% static "static/media/font"%}')";
+                ></body>
 
                </div>
                </div>

@@ -19,6 +19,6 @@ class FilmAdmin(admin.ModelAdmin):
 
 @admin.register(FilmSession)
 class FilmSessionAdmin(admin.ModelAdmin):
-    fields = ["film_name", "price", "date_time", "hall"]
-    list_display = ["film_name", "price", "date_time", "hall"]
+    fields = ["film_name", "price", "date", "time_start", "time_finish",  "hall", "places"]
+    list_display = ["film_name", "price", "date",  "time_start", "time_finish", "hall", "places"]
     ordering = ['id']

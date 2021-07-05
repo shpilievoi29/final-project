@@ -19,6 +19,7 @@
 
           {% endif %}
             <a href="{% url "film:sessions" %}" class="btn">Sessions</a>
+            <a href="{% url "ticket:create" %}" class="btn">Tickets</a>
             <a href="{% url "user:profile" %}" class="btn">Profile</a>
           <a href="{% url "user:logout" %}" class="btn">Logout</a>
         {% else %}

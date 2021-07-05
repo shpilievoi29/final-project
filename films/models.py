@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.urls import reverse_lazy
 
 
@@ -52,14 +54,18 @@ class FilmSession(models.Model):
     film_name = models.ForeignKey(Film, on_delete=models.CASCADE, null=True,
                                   db_column="title")
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    date_time = models.DateTimeField(blank=True, db_column="date and time sessions")
+    date = models.DateField()
+    time_start = models.TimeField(blank=True, db_column="start time sessions")
+    time_finish = models.TimeField(blank=True, db_column="finish time sessions")
     hall = models.PositiveSmallIntegerField(
         choices=HALL_CHOICES, default=5, verbose_name="hall choices")
+    places = models.IntegerField(default=50)
 
     def __repr__(self):
         return f"Session ('{self.id}')"
 
     def __str__(self):
         return f"{self.id}|-title: {self.film_name}" \
-               f"|-price: {self.price}|-day and time:{self.date_time}|-hall:{self.hall}"
+               f"|-price: {self.price}|-date{self.date}|-start time:{self.time_start}|-finish time:" \
+               f"{self.time_finish}|-hall:{self.hall}| places:{self.places}"
 

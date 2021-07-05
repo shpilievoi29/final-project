@@ -1,9 +1,10 @@
-{% extends "film/film.html" %}
+{% extends "base.html" %}
 {% block content %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
   <h5 class="h5">{{ object.film }}</h5>
   <div class="row">
 
-      <img src="{{ object.image.url}}" alt="image" style="width:300px; " >
+      <img src="{{ object.image.url}}" alt="image" aria-setsize="200" >
   </div>
   <div class="row">
     <div class="text-body"> {{ object.film_description }}</div>
@@ -19,7 +20,8 @@
           </div>
         </li>
       {% endfor %}
+    <a href="{% url "film:list" %}">Back to the films</a>
     </ul>
   </div>
-
+    </div>
 {% endblock %}

@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('user.urls', namespace='user')),
     path('', include('films.urls', namespace="film")),
     path('api/', include('api.urls', namespace='api')),
+    path("", include("ticket.urls", namespace="ticket")),
 ]

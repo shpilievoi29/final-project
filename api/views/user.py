@@ -7,7 +7,7 @@ from rest_framework.generics import ListAPIView, RetrieveUpdateAPIView
 from user.serializers import UserSerializer
 
 
-class UserListAPIVie(ListAPIView):
+class UserListAPIView(ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 

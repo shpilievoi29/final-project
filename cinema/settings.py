@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'ticket.apps.TicketConfig',
     'api.apps.APIConfig',
     'films.apps.FilmsConfig',
     'user.apps.UserConfig',
