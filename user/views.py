@@ -1,3 +1,8 @@
+"""
+Implemented Users Urls
+"""
+
+
 from urllib import request
 
 from django.contrib.auth.mixins import LoginRequiredMixin

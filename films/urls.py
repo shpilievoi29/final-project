@@ -1,3 +1,8 @@
+"""
+Implemented Film's urls
+"""
+
+
 from django.urls import path
 
 from films.views import FilmListView, FilmDetailView, SessionListView

@@ -1,9 +1,16 @@
+"""
+Implemented User forms
+"""
+
 from django import forms
-from django.contrib.auth import authenticate
+
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView
+
+"""
+User registration form
+"""
 
 
 class UserRegistrationForm(forms.Form):
@@ -31,6 +38,11 @@ class UserRegistrationForm(forms.Form):
             self.add_error("password2", "password does not match")
 
 
+"""
+User SinUpForm
+"""
+
+
 class UserSignUpForm(UserCreationForm):
     email = forms.EmailField
     fields = [
@@ -47,6 +59,11 @@ class UserSignUpForm(UserCreationForm):
             "first_name", "last_name",
             "password1", "password2"
         ]
+
+
+"""
+User SignInFom
+"""
 
 
 class UserSignInForm(AuthenticationForm):

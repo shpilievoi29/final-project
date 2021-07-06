@@ -1,6 +1,11 @@
+"""
+Implementation admin in films app
+"""
+
+
 from django.contrib import admin
 
-from films.models import Film, Category, FilmSession
+from films.models import Film, Category, FilmSession, Hall
 
 
 @admin.register(Category)
@@ -17,8 +22,15 @@ class FilmAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ['film_name', ]}
 
 
+@admin.register(Hall)
+class HallAdmin(admin.ModelAdmin):
+    fields = [ "hall", "places"]
+    list_display = [ "hall", "places"]
+
+
+
 @admin.register(FilmSession)
 class FilmSessionAdmin(admin.ModelAdmin):
-    fields = ["film_name", "price", "date", "time_start", "time_finish",  "hall", "places"]
-    list_display = ["film_name", "price", "date",  "time_start", "time_finish", "hall", "places"]
+    fields = ["film_name", "price", "date", "time_start", "time_finish",  "created_hall"]
+    list_display = ["film_name", "price", "date",  "time_start", "time_finish", "created_hall"]
     ordering = ['id']

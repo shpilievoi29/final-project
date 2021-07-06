@@ -1,16 +1,12 @@
-from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import render
-from django.urls import reverse_lazy
-from django.views import View
-from django.views.generic import ListView, DetailView, CreateView, RedirectView
-from rest_framework.response import Response
-from rest_framework import status
+"""
 
+Implementations  films views  to display list of films , film detail , sessions of films
+
+"""
+
+from django.views.generic import ListView, DetailView, CreateView, RedirectView
 from films.forms import ReviewForms
 from films.models import Film, Category, FilmSession
-from rest_framework.views import APIView
-
-from rest_framework.decorators import api_view
 
 
 class FilmListView(ListView):

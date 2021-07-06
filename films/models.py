@@ -1,7 +1,8 @@
-from datetime import datetime
+"""
+Implemented Category , Film, Hall, Session models,
+"""
 
 from django.urls import reverse_lazy
-
 
 from django.db import models
 
@@ -46,10 +47,20 @@ class Film(models.Model):
         return self.film_name
 
 
-class FilmSession(models.Model):
+class Hall(models.Model):
     HALL_CHOICES = [
         [1, 1], [2, 2], [3, 3], [4, 4], [5, 5]
+
     ]
+    hall = models.PositiveSmallIntegerField(choices=HALL_CHOICES, default=5,
+                                            verbose_name="hall choices")
+    places = models.IntegerField(default=50)
+
+    def __str__(self):
+        return f"|-Hall: {self.hall}|- Places:{self.places}"
+
+
+class FilmSession(models.Model):
     id = models.AutoField(primary_key=True, null=False, blank=True)
     film_name = models.ForeignKey(Film, on_delete=models.CASCADE, null=True,
                                   db_column="title")
@@ -57,9 +68,7 @@ class FilmSession(models.Model):
     date = models.DateField()
     time_start = models.TimeField(blank=True, db_column="start time sessions")
     time_finish = models.TimeField(blank=True, db_column="finish time sessions")
-    hall = models.PositiveSmallIntegerField(
-        choices=HALL_CHOICES, default=5, verbose_name="hall choices")
-    places = models.IntegerField(default=50)
+    created_hall = models.ForeignKey(Hall, on_delete=models.CASCADE, verbose_name="hall")
 
     def __repr__(self):
         return f"Session ('{self.id}')"
@@ -67,5 +76,4 @@ class FilmSession(models.Model):
     def __str__(self):
         return f"{self.id}|-title: {self.film_name}" \
                f"|-price: {self.price}|-date{self.date}|-start time:{self.time_start}|-finish time:" \
-               f"{self.time_finish}|-hall:{self.hall}| places:{self.places}"
-
+               f"{self.time_finish}|-hall:{self.created_hall}"

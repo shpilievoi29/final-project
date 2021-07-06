@@ -1,4 +1,6 @@
-from django.shortcuts import render
+"""
+Imlemented Ticket views
+"""
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView
 
@@ -14,6 +16,9 @@ class TicketCreateView(CreateView):
         form.instance.customer = self.request.user
         return super(TicketCreateView, self).form_valid(form)
 
+    def get_success_url(self):
+        return reverse_lazy(self.request, reverse_lazy("ticket:list"))
+
 
 class TicketListView(ListView):
     http_method_names = ["head", "options", "get"]
@@ -23,4 +28,4 @@ class TicketListView(ListView):
     def get_queryset(self):
         queryset = super(TicketListView, self).get_queryset()
 
-        return queryset.filter(customer=self.request.user, is_deleted=False)
+        return queryset.filter(customer=self.request.user)
