@@ -1,6 +1,6 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from films.models import Film, FilmSession
-from films.serializers import FilmSerializer, FilmSessionSerializer
+from films.models import Film, FilmSession, Hall
+from films.serializers import FilmSerializer, FilmSessionSerializer, HallSerializer
 
 
 class FilmListAPIView(ListCreateAPIView):
@@ -22,5 +22,17 @@ class FilmSessionListAPIView(ListCreateAPIView):
 class FilmSessionDetailAPIView(RetrieveUpdateDestroyAPIView):
     queryset = FilmSession.objects.all()
     serializer_class = FilmSessionSerializer
+    lookup_url_kwarg = "id"
+    lookup_field = "id"
+
+
+class HallListAPIView(ListCreateAPIView):
+    queryset = Hall.objects.all()
+    serializer_class = HallSerializer
+
+
+class HallDetailAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = Hall.objects.all()
+    serializer_class = HallSerializer
     lookup_url_kwarg = "id"
     lookup_field = "id"
