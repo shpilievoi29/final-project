@@ -16,15 +16,17 @@
           {% if request.user.is_staff %}
             <a href="{% url "admin:index" %}" class="btn">Admin</a>
             {% else %}
-
+             <a href="{% url "film:sessions" %}" class="btn">Sessions</a>
+            <a href="{% url "ticket:create" %}" class="btn">Buy tickets</a>
+            <a href="{% url "ticket:list" %}" class="btn">My tickets</a>
           {% endif %}
-            <a href="{% url "film:sessions" %}" class="btn">Sessions</a>
-            <a href="{% url "ticket:create" %}" class="btn">Tickets</a>
+
             <a href="{% url "user:profile" %}" class="btn">Profile</a>
           <a href="{% url "user:logout" %}" class="btn">Logout</a>
         {% else %}
           <a href="{% url "user:sign-in" %}" class="btn">Login</a>
           <a href="{% url "user:sign-up" %}" class="btn">Register</a>
+            <a href="{% url "film:sessions" %}" class="btn">Sessions</a>
         {% endif %}
       </div>
     </div>

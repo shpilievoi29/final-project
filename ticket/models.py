@@ -21,4 +21,4 @@ class Ticket(models.Model):
                f" {self.customer}"
 
     def get_absolute_url(self):
-        return reverse_lazy("film:list", kwargs={"pk": self.id})
+        return reverse_lazy("ticket:list", kwargs={"pk": self.id})

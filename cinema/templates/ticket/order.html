@@ -4,9 +4,9 @@
   <form class="row" method="post">
     {% csrf_token %}
 
-     <div class="row">
-       {% load static %}
 
+       {% load static %}
+ <div class="row">
     {{ form.as_p }}
     <input type="submit" class="btn btn-primary col-1" value="to buy">
   </div>

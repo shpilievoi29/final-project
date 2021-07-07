@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-{% block doctitle %}Ticket order list |{{ block.super }}{% endblock %}
+{% block doctitle %}Ticket list |{{ block.super }}{% endblock %}
 {% block content %}
 
 <ul>
-    <h1>Ticket list</h1>
-    {% for order in order_list %}
-        <li>{{ order }}</li>
+
+    {% for ticket in ticket_list %}
+        <li>{{ ticket }}</li>
 {% endfor %}
 </ul>
-    <a href="{% url "ticket:create" %}">Create Order</a>
+    <a href="{% url "ticket:create" %}">Buy ticket</a>
 
 {% endblock %}

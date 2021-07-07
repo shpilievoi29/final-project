@@ -17,10 +17,14 @@
           <div class="ms-2 me-auto">
             <div class="fw-bold">{{ review.rate }}</div>
             {{ review.review }}
+
           </div>
         </li>
       {% endfor %}
     <a href="{% url "film:list" %}">Back to the films</a>
+    <a href="{% url "film:sessions" %}" class="btn">Sessions</a>
+            <a href="{% url "ticket:create" %}" class="btn">Tickets</a>
+
     </ul>
   </div>
     </div>
