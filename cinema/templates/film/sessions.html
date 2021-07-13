@@ -11,10 +11,11 @@
 
     <p class="card-context"> Title: {{session.film_name}}</p>
     <p class="card-context"> Price: {{ session.price}}</p>
-            <p class="card-context">Date: {{ session.date}}</p>
+            <p class="card-context">Date Start: {{ session.date_of_beginning}}</p>
+            <p class="card-context">Date Finish: {{ session.date_of_ending}}</p>
             <p class="card-context">From: {{ session.time_start}}</p>
             <p class="card-context">Till: {{ session.time_finish}}</p>
-            <p class="card-context">Hall: {{ session.hall}}</p>
+            <p class="card-context"> {{ session.created_hall}}</p>
             </div>
 </div>
             </div>

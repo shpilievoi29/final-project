@@ -15,6 +15,7 @@
         {% if request.user.is_authenticated %}
           {% if request.user.is_staff %}
             <a href="{% url "admin:index" %}" class="btn">Admin</a>
+              <a href="{% url "film:create_session" %}" class="btn">Create Session</a>
             {% else %}
              <a href="{% url "film:sessions" %}" class="btn">Sessions</a>
             <a href="{% url "ticket:create" %}" class="btn">Buy tickets</a>

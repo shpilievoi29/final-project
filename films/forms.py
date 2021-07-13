@@ -1,25 +1,12 @@
 from django.core.exceptions import ValidationError
 from django import forms
 
-from films.models import Film
+from films.models import FilmSession
 
 
-class ReviewForms(forms.Form):
-    review = forms.CharField(label="Film review")
-    rate = forms.IntegerField(label="Film rate", max_value=5, min_value=1)
-    film = forms.ModelChoiceField(required=False, queryset=Film.objects.all())
+class AdminSessionsForm(forms.ModelForm):
+    model = FilmSession
+    fields = "film_name", "price", "date_of_beginning", "date_of_ending", "time_start", \
+             "time_finish", "created_hall"
+    template = "admin_session"
 
-    def clean_review(self):
-        review = self.cleaned_data.get("review")
-        if not review:
-            raise ValidationError("review text required")
-        else:
-            return review
-
-    def clean_rate(self):
-        rate = self.cleaned_data.get("rate")
-        if rate < 1 or rate > 5:
-            raise ValidationError("rate should be between 1 or 5")
-
-    def clean(self):
-        super().clean()

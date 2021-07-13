@@ -1,10 +1,15 @@
 """
 Imlemented Ticket views
 """
-from django.urls import reverse_lazy
+from urllib import request
+
+from django.http import HttpResponseRedirect
+
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView
 
 from ticket.models import Ticket
+from user.models import Cash
 
 
 class TicketCreateView(CreateView):
@@ -14,10 +19,15 @@ class TicketCreateView(CreateView):
 
     def form_valid(self, form):
         form.instance.customer = self.request.user
+        wallet = Cash.objects.get(username=form.instance.customer).wallet
+        total = form.instance.place * form.instance.session.price
+        if total > wallet:
+            return HttpResponseRedirect(reverse("ticket:create"))
+
         return super(TicketCreateView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy(self.request, reverse_lazy("ticket:list"))
+        return reverse_lazy("ticket:list")
 
 
 class TicketListView(ListView):

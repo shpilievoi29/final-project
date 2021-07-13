@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -127,7 +128,6 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -135,9 +135,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGOUT_REDIRECT_URL = "film:list"
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        # "rest_framework.authentication.BasicAuthentication",
-        # "rest_framework.authentication.SessionAuthentication",
+
         "rest_framework.authentication.TokenAuthentication",
     ]
 
 }
+"""
+Logout after 5 minutes after 5 seconds without actions
+
+"""
+SESSION_COOKIE_AGE = 5 * 60
+SESSION_SAVE_EVERY_REQUEST = True

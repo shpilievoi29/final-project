@@ -7,6 +7,7 @@
     {% for ticket in ticket_list %}
         <li>{{ ticket }}</li>
 {% endfor %}
+<p>Wallet:  {{request.user.cash.wallet}} USD</p>
 </ul>
     <a href="{% url "ticket:create" %}">Buy ticket</a>
 

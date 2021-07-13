@@ -3,9 +3,9 @@
 Implementations  films views  to display list of films , film detail , sessions of films
 
 """
-
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, RedirectView
-from films.forms import ReviewForms
+
 from films.models import Film, Category, FilmSession
 
 
@@ -32,11 +32,6 @@ class FilmDetailView(DetailView):
     template_name = "film/film_detail.html"
     slug_field = "slug"
 
-    def get_context_data(self, **kwargs):
-        context = super(FilmDetailView, self).get_context_data(**kwargs)
-        context["form"] = ReviewForms()
-        return context
-
 
 class SessionListView(ListView):
     model = FilmSession
@@ -44,9 +39,18 @@ class SessionListView(ListView):
     template_name = "film/sessions.html"
     queryset = FilmSession.objects.all()
 
-    # def get_queryset(self):
-    #     queryset = super(SessionListView, self).get_queryset()
-    #     return queryset
+
+class AdminCreateSessionView(CreateView):
+    model = FilmSession
+    fields = "__all__"
+    template_name = "film/admin_session.html"
+
+    def get_success_url(self):
+        return reverse_lazy("film:list")
+
+# def get_queryset(self):
+#     queryset = super(SessionListView, self).get_queryset()
+#     return queryset
 
 # class ReviewCreateView(CreateView):
 #     template_name = "film_detail.html"

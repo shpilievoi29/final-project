@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block doctitle %}Admin session creation| {{ block.super }}{% endblock %}
+{% block content %}
+  <form class="row" method="post">
+    {% csrf_token %}
+ <div class="row">
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-primary col-1" value="Create Session">
+  </div>
+<td class="tdStyle">
+  </form>
+{% endblock %}
