@@ -4,6 +4,11 @@ from django.urls import reverse_lazy
 
 from films.models import FilmSession
 
+"""
+Implemented Ticket model 
+
+"""
+
 
 class Ticket(models.Model):
     id = models.AutoField(primary_key=True, null=False, blank=True)
@@ -17,7 +22,7 @@ class Ticket(models.Model):
         return f"Ticket ('{self.id}')"
 
     def __str__(self):
-        return f"{self.id}|-session: {self.session}|-bought place(s): {self.place}|-customer" \
+        return f"{self.id}|-session: {self.session}|-bought place(s): {self.place}|-customer:" \
                f" {self.customer}"
 
     @property
@@ -34,4 +39,3 @@ class Ticket(models.Model):
         self.total = self.get_total()
 
         super(Ticket, self).save(*args, **kwargs)
-

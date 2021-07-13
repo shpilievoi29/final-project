@@ -1,6 +1,17 @@
+"""
+
+Implemented Test Cases for  Film application
+
+"""
+
 from django.test import TestCase
 
 from films.models import Category, Film, Hall
+
+"""
+Category model test case
+
+"""
 
 
 class CategoryTestCase(TestCase):
@@ -9,10 +20,11 @@ class CategoryTestCase(TestCase):
         self.assertEqual(str(category), category.category)
 
 
-class FilmTestCase(TestCase):
-    def test_string_representation(self):
-        film = Film(film_name="Hooray")
-        self.assertEqual(str(film), film.film_name)
+"""
+
+Film model test case
+
+"""
 
 
 class FilmModelTest(TestCase):
@@ -27,6 +39,13 @@ class FilmModelTest(TestCase):
     def test_it_has_information_fields(self):
         self.assertIsInstance(self.film.film_name, str)
         self.assertIsInstance(self.film.film_description, str)
+
+
+"""
+
+Hall model test case
+
+"""
 
 
 class HallModelTest(TestCase):

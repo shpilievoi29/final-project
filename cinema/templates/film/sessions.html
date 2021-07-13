@@ -15,7 +15,8 @@
             <p class="card-context">Date Finish: {{ session.date_of_ending}}</p>
             <p class="card-context">From: {{ session.time_start}}</p>
             <p class="card-context">Till: {{ session.time_finish}}</p>
-            <p class="card-context"> {{ session.created_hall}}</p>
+            <p class="card-context"> Hall:{{ session.created_hall.hall}}
+            <p class="card-context"> Free places: {{ session.get_free_places_in_hall}}</p>
             </div>
 </div>
             </div>

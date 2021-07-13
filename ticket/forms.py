@@ -6,7 +6,7 @@ from ticket.models import Ticket
 class TicketForms(forms.ModelForm):
     class Meta:
         model = Ticket
-        fields = ["date",  "session", "place"]
+        fields = ["date",  "session"]
 
 
 

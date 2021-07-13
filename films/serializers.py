@@ -1,12 +1,30 @@
+"""
+Model Film serializer
+"""
+
+
 from rest_framework import serializers
 
 from films.models import Category, Film, FilmSession, Hall
+
+"""
+
+Implemented serializer for model Category
+
+
+"""
 
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = "__all__"
+
+
+"""
+
+Films serializer
+"""
 
 
 class FilmSerializer(serializers.ModelSerializer):
@@ -19,10 +37,22 @@ class FilmSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+"""
+Hall serializer
+"""
+
+
 class HallSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hall
         fields = "__all__"
+
+
+"""
+
+Session serializer
+
+"""
 
 
 class FilmSessionSerializer(serializers.ModelSerializer):

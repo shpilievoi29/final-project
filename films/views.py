@@ -8,6 +8,12 @@ from django.views.generic import ListView, DetailView, CreateView, RedirectView
 
 from films.models import Film, Category, FilmSession
 
+"""
+
+Implemented Film list view
+
+"""
+
 
 class FilmListView(ListView):
     model = Film
@@ -27,10 +33,23 @@ class FilmListView(ListView):
         return context
 
 
+"""
+
+implemented detail view for films
+"""
+
+
 class FilmDetailView(DetailView):
     model = Film
     template_name = "film/film_detail.html"
     slug_field = "slug"
+
+
+"""
+
+Sessions list view for sessions 
+
+"""
 
 
 class SessionListView(ListView):
@@ -47,72 +66,3 @@ class AdminCreateSessionView(CreateView):
 
     def get_success_url(self):
         return reverse_lazy("film:list")
-
-# def get_queryset(self):
-#     queryset = super(SessionListView, self).get_queryset()
-#     return queryset
-
-# class ReviewCreateView(CreateView):
-#     template_name = "film_detail.html"
-#     http_method_names = ["post", "head", "options", ]
-#     model = Review
-#     form_class = ReviewForms
-#
-#     def get_success_url(self):
-#         return reverse_lazy("film:films_detail", kwargs={"slug": self.kwargs.get("slug")})
-#
-#     def form_valid(self, form):
-#         slug = self.kwargs.get("slug")
-#         response = HttpResponseRedirect(self.get_success_url())
-#
-#         if self.request.session.get(slug) is not None:
-#             return response
-#
-#         try:
-#             product = Product.objects.get(slug=slug)
-#             form.instance.product = product
-#
-#             super(ReviewCreateView, self).form_valid(form)
-#
-#             max_age = 300
-#             self.request.session.set_expiry(max_age)
-#
-#             self.request.session[slug] = slug
-#             return response
-#
-#         except Product.DoesNotExist:
-#             return Http404()
-
-
-# class AddToCartView(RedirectView):
-#     def get(self, *args, **kwargs):
-#         cart = self.request.session.get("cart", {})
-#         product_slug = self.kwargs.get("slug")
-#         if product_slug in cart:
-#             cart[product_slug] += 1
-#         else:
-#             cart[product_slug] = 1
-#         self.request.session["cart"] = cart
-#         redirect_url = self.request.headers.get('referer') or reverse_lazy(
-#             "product:product_list")
-#         return HttpResponseRedirect(redirect_url)
-#
-#
-# class PurchaseView(View):
-#     def get(self, request, *args, **kwargs):
-#         session_cart = request.session.get('cart')
-#         if session_cart is None:
-#             redirect_url = self.request.headers.get('referer') or reverse_lazy(
-#                 "product:product_list")
-#             return HttpResponseRedirect(redirect_url)
-#         user = self.request.user
-#         cart = Cart.objects.get_or_create(user=user, is_active=True)
-#         for product_slug in session_cart:
-#             product = Product.objects.get(slug=product_slug)
-#             quantity = session_cart[product_slug]
-#             cart_item = CartItem(product=product, quantity=quantity, cart=cart)
-#             cart_item.save()
-#             self.request.session["cart"] = {}
-#         redirect_url = self.request.headers.get('referer') or reverse_lazy(
-#             "product:product_list")
-#         return HttpResponseRedirect(redirect_url)

@@ -74,13 +74,13 @@ class FilmSession(models.Model):
         return f"|-title: {self.film_name}" \
                f"|-price: {self.price}|-date of beginning:{self.date_of_beginning}| day of " \
                f"ending:{self.date_of_ending}|-start time:{self.time_start}" \
-               f"|-finish time:{self.time_finish} {self.created_hall}"
+               f"|-finish time:{self.time_finish}|-free places: {self.get_free_places_in_hall()}"
 
     def get_free_places_in_hall(self):
         from ticket.models import Ticket
         session_tickets = Ticket.objects.filter(session=self.id)
         place_count = 0
         for ticket in session_tickets:
-            place_count += ticket.quantity
+            place_count += ticket.place
         self.created_hall.places -= place_count
         return self.created_hall.places
