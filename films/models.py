@@ -1,11 +1,15 @@
 """
 Implemented Category , Film, Hall, Session models,
 """
-import datetime
 
 from django.urls import reverse_lazy
 
 from django.db import models
+
+"""
+Category of films model
+
+"""
 
 
 class Category(models.Model):
@@ -21,6 +25,11 @@ class Category(models.Model):
     @property
     def name(self):
         return self.category
+
+
+"""
+Film model
+"""
 
 
 class Film(models.Model):
@@ -48,12 +57,25 @@ class Film(models.Model):
         return self.film_name
 
 
+"""
+Hall model for sessions
+
+"""
+
+
 class Hall(models.Model):
     hall = models.CharField(unique=True, max_length=100, verbose_name="hall")
     places = models.IntegerField(default=50)
 
     def __str__(self):
         return f"|-Hall: {self.hall}|- Free places:{self.places}"
+
+
+"""
+
+Films sessions model
+
+"""
 
 
 class FilmSession(models.Model):

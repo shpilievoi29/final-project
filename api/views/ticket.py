@@ -8,6 +8,12 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from ticket.models import Ticket
 from ticket.serializers import TicketSerializer
 
+"""
+
+Ticket views for api
+
+"""
+
 
 class TicketListAPIView(ListCreateAPIView):
     queryset = Ticket.objects.all()

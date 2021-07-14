@@ -3,6 +3,12 @@ from django.urls import path
 from api.views.film import FilmListAPIView, FilmDetailAPIView, FilmSessionListAPIView, \
     FilmSessionDetailAPIView, HallListAPIView, HallDetailAPIView
 
+"""
+
+Film urls for api
+
+"""
+
 app_name = "film"
 
 urlpatterns = [

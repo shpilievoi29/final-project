@@ -1,7 +1,11 @@
 from django.urls import path
 
 from api.views.ticket import TicketListAPIView, TicketDetailAPIView
+"""
 
+Ticket urls for api
+
+"""
 app_name = "ticket"
 
 urlpatterns = [

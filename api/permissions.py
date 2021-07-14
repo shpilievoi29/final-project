@@ -1,5 +1,9 @@
 from rest_framework.permissions import BasePermission
 
+"""
+Implemented permissions for admin and registered Users
+"""
+
 
 class UserListAPIPermission(BasePermission):
     def has_permission(self, request, view):

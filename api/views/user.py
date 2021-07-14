@@ -9,6 +9,12 @@ from rest_framework.response import Response
 from api.permissions import UserListAPIPermission, UserAPIPermission
 from user.serializers import UserSerializer
 
+"""
+
+User views for api
+
+"""
+
 
 class UserListAPIView(ListAPIView):
     queryset = User.objects.all()

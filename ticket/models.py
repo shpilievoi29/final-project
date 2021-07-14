@@ -39,3 +39,10 @@ class Ticket(models.Model):
         self.total = self.get_total()
 
         super(Ticket, self).save(*args, **kwargs)
+
+
+"""
+
+def "save" and "get total "helps users buying tickets
+
+"""

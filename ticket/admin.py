@@ -1,5 +1,11 @@
-from django.contrib import admin
 
+"""
+
+Admin access for tickets
+
+"""
+
+from django.contrib import admin
 from ticket.models import Ticket
 
 

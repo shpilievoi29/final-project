@@ -1,5 +1,5 @@
 """
-Imlemented Ticket views
+Implemented Ticket views
 """
 from urllib import request
 
@@ -7,9 +7,13 @@ from django.http import HttpResponseRedirect
 
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView
-
 from ticket.models import Ticket
 from user.models import Cash
+
+"""
+Creation create view for Ticket
+
+"""
 
 
 class TicketCreateView(CreateView):
@@ -28,6 +32,12 @@ class TicketCreateView(CreateView):
 
     def get_success_url(self):
         return reverse_lazy("ticket:list")
+
+
+"""
+
+Creation ticket list View
+"""
 
 
 class TicketListView(ListView):

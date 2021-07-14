@@ -2,6 +2,12 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from films.models import Film, FilmSession, Hall
 from films.serializers import FilmSerializer, FilmSessionSerializer, HallSerializer
 
+"""
+
+Film views for api
+
+"""
+
 
 class FilmListAPIView(ListCreateAPIView):
     queryset = Film.objects.all()
